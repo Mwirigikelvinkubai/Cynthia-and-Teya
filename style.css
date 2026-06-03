@@ -1,0 +1,459 @@
+/* ════════════════════════════════════════════
+   Cynthia & Teya Wedding – Stylesheet
+   Colour palette: Royal Blue · White · Gold
+   ════════════════════════════════════════════ */
+
+:root {
+  --blue:      #1A3A8F;
+  --blue-mid:  #2B5BE0;
+  --blue-lt:   #4A7FE8;
+  --blue-pale: #E8EFFE;
+  --gold:      #C9960C;
+  --gold-lt:   #F0C040;
+  --white:     #FFFFFF;
+  --cream:     #F9F7FF;
+  --black:     #111827;
+  --grey:      #6B7280;
+  --border:    #C7D3F5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--cream);
+  color: var(--black);
+}
+
+/* ── Ankara strip (blue/white/gold African pattern) ── */
+.ankara-strip {
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blue)    0px,   var(--blue)    24px,
+    var(--gold)    24px,  var(--gold)    32px,
+    var(--white)   32px,  var(--white)   48px,
+    var(--blue-mid)48px,  var(--blue-mid)64px,
+    var(--gold-lt) 64px,  var(--gold-lt) 72px,
+    var(--blue)    72px,  var(--blue)    96px,
+    var(--white)   96px,  var(--white)   104px
+  );
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  background: var(--blue);
+  color: var(--white);
+  text-align: center;
+  /* Responsive height: tall on desktop, natural on mobile */
+  min-height: 420px;
+}
+
+/* The photo fills the entire hero */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--blue); /* fallback while image loads */
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  display: block;
+  filter: brightness(1.08) saturate(1.1);
+}
+
+/* Light gradient — only darkens the bottom third for text legibility */
+.hero-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,25,70,0.05) 0%,
+    rgba(10,25,70,0.10) 45%,
+    rgba(10,25,70,0.65) 75%,
+    rgba(10,25,70,0.88) 100%
+  );
+}
+
+/* Kente pattern on top of overlay */
+.hero-photo-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg, transparent, transparent 24px,
+      rgba(201,150,12,0.08) 24px, rgba(201,150,12,0.08) 26px
+    );
+  pointer-events: none;
+}
+
+/* Text sits at the bottom of the photo */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  /* Padding-top pushes the hero to a good height; text anchors to bottom */
+  padding: clamp(220px, 40vw, 380px) 20px 48px;
+}
+
+.hero-monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-lt);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--gold-lt);
+  background: rgba(10,25,70,0.5);
+  margin-bottom: 12px;
+}
+.hero-text h1 {
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  font-weight: normal;
+  letter-spacing: 2px;
+  color: var(--white);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+.hero-text .ampersand {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gold-lt);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin: 6px 0;
+}
+.hero-text .date-line {
+  margin-top: 10px;
+  font-size: clamp(0.82rem, 2.5vw, 1rem);
+  color: rgba(255,255,255,0.85);
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* ── Section ── */
+.section {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 52px 24px;
+}
+.section-title {
+  font-size: 0.78rem;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.section h2 {
+  font-size: 1.7rem;
+  font-weight: normal;
+  color: var(--blue);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0, var(--gold) 10px,
+    transparent 10px, transparent 16px
+  );
+}
+.divider-icon { color: var(--gold); font-size: 1rem; white-space: nowrap; font-family: Georgia, serif; }
+
+/* ── Intro card ── */
+.intro-card {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(26,58,143,0.10);
+  overflow: hidden;
+}
+.intro-card-banner {
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blue)    0, var(--blue)    20px,
+    var(--gold)    20px, var(--gold)  28px,
+    var(--white)   28px, var(--white) 36px,
+    var(--blue-mid)36px, var(--blue-mid) 56px,
+    var(--gold-lt) 56px, var(--gold-lt) 64px
+  );
+}
+.intro-body {
+  padding: 30px 32px;
+  line-height: 1.85;
+  font-size: 1rem;
+  color: #2a2a2a;
+}
+.intro-body p + p { margin-top: 14px; }
+
+/* ── M-PESA box ── */
+.mpesa-box {
+  margin-top: 26px;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 18px 22px;
+  font-family: Arial, sans-serif;
+}
+.mpesa-box .mpesa-title {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 10px;
+}
+.mpesa-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+.mpesa-row + .mpesa-row { margin-top: 8px; }
+.mpesa-label { color: rgba(255,255,255,0.6); font-size: 0.85rem; min-width: 100px; }
+.mpesa-value { font-weight: bold; color: var(--gold-lt); font-size: 1.05rem; letter-spacing: 1px; }
+
+/* ── Venue map ── */
+.venue-section {
+  margin-top: 20px;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(26,58,143,0.10);
+}
+.venue-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: var(--blue);
+  color: var(--white);
+}
+.venue-icon { font-size: 1.6rem; }
+.venue-name {
+  font-size: 1.05rem;
+  font-weight: bold;
+  font-family: Georgia, serif;
+  color: var(--white);
+}
+.venue-sub {
+  font-size: 0.82rem;
+  font-family: Arial, sans-serif;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+.map-wrap { width: 100%; line-height: 0; }
+.map-wrap iframe { display: block; }
+.directions-btn {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: var(--gold);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+  font-size: 0.88rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.directions-btn:hover { background: var(--gold-lt); color: var(--black); }
+
+/* ── Photo placeholder ── */
+.placeholder {
+  margin-top: 20px;
+  background: var(--blue-pale);
+  border: 2px dashed var(--blue-lt);
+  border-radius: 8px;
+  padding: 18px;
+  font-size: 0.88rem;
+  font-family: Arial, sans-serif;
+  color: var(--blue);
+  text-align: center;
+}
+
+/* ── Form card ── */
+.form-card {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(26,58,143,0.10);
+  overflow: hidden;
+}
+.form-card-banner {
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold)    0, var(--gold)    16px,
+    var(--blue)    16px, var(--blue)  36px,
+    var(--gold-lt) 36px, var(--gold-lt) 44px,
+    var(--blue-mid)44px, var(--blue-mid) 64px
+  );
+}
+.form-inner { padding: 34px 32px; }
+
+.form-group { margin-bottom: 24px; }
+
+.form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.form-label .req { color: #dc2626; }
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--blue-mid);
+  box-shadow: 0 0 0 3px rgba(43,91,224,0.12);
+  background: var(--white);
+}
+textarea { resize: vertical; min-height: 84px; }
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-family: Arial, sans-serif;
+  color: var(--black);
+  cursor: pointer;
+  padding: 9px 16px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  transition: border-color 0.2s, background 0.2s;
+  user-select: none;
+}
+.radio-option:has(input:checked) {
+  border-color: var(--blue-mid);
+  background: var(--blue-pale);
+  color: var(--blue);
+}
+.radio-option input[type="radio"] {
+  width: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  accent-color: var(--blue-mid);
+}
+
+/* ── Submit button ── */
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.btn-submit::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold-lt) 0, var(--gold-lt) 20px,
+    var(--gold) 20px, var(--gold) 40px
+  );
+}
+.btn-submit:hover { background: var(--blue-mid); }
+.btn-submit:active { transform: scale(0.99); }
+
+/* ── Success message ── */
+#success-msg {
+  display: none;
+  background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+  color: var(--white);
+  border-radius: 8px;
+  padding: 30px 24px;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin: 24px 32px 32px;
+}
+#success-msg .highlight { color: var(--gold-lt); font-size: 1.3rem; }
+
+/* ── Footer ── */
+footer {
+  background: var(--blue);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+  font-family: Arial, sans-serif;
+  line-height: 1.8;
+}
+footer .footer-names {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--gold-lt);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .form-inner { padding: 24px 16px; }
+  .intro-body { padding: 22px 16px; }
+  .radio-group { flex-direction: column; gap: 8px; }
+  .venue-header { padding: 14px 16px; }
+  .mpesa-box { padding: 14px 16px; }
+  .section { padding: 36px 16px; }
+}
