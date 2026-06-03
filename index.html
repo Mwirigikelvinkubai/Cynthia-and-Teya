@@ -51,11 +51,11 @@
           <div class="mpesa-title">Send your support via M-PESA</div>
           <div class="mpesa-row">
             <span class="mpesa-label">Number</span>
-            <span class="mpesa-value">0796 650 147</span>
+            <span class="mpesa-value">0716 661 300</span>
           </div>
           <div class="mpesa-row">
             <span class="mpesa-label">Account Name</span>
-            <span class="mpesa-value">Susan Chagwi</span>
+            <span class="mpesa-value">Justus Kariuki</span>
           </div>
         </div>
       </div>
@@ -116,8 +116,8 @@
 
         <!-- 3. Redemption date -->
         <div class="form-group">
-          <label class="form-label">3. When are you likely to redeem the pledge? <span class="req">*</span></label>
-          <input type="date" name="entry.1958059898" required />
+          <label class="form-label">3. When are you likely to redeem the pledge?</label>
+          <input type="date" name="entry.1958059898" />
         </div>
 
         <!-- 4. Reminder -->
@@ -144,7 +144,7 @@
           <label class="form-label">6. Will you be attending? <span class="req">*</span></label>
           <div class="radio-group">
             <label class="radio-option">
-              <input type="radio" name="entry.1649045227" value="Yes" required /> Yes, I will attend
+              <input type="radio" name="entry.1649045227" value="Yes" /> Yes, I will attend
             </label>
             <label class="radio-option">
               <input type="radio" name="entry.1649045227" value="No" /> No, I will not attend
@@ -153,6 +153,36 @@
               <input type="radio" name="entry.1649045227" value="Not Sure" /> Not sure yet
             </label>
           </div>
+        </div>
+
+        <!-- 7. Attending alone or with someone? (shows only if attending = Yes) -->
+        <div class="form-group conditional" id="q7-group">
+          <label class="form-label">7. Will you be attending alone or with someone? <span style="font-weight:normal;font-size:0.8em;color:#6B7280;">(optional)</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="entry.1190288487" value="Alone" /> Alone
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="entry.1190288487" value="With Someone else" /> With someone else
+            </label>
+          </div>
+        </div>
+
+        <!-- 8. How many? (shows only if Q7 = With someone else) -->
+        <div class="form-group conditional" id="q8-group">
+          <label class="form-label">8. How many people will you be coming with? <span style="font-weight:normal;font-size:0.8em;color:#6B7280;">(optional)</span></label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="entry.2010179067" value="1" /> 1</label>
+            <label class="radio-option"><input type="radio" name="entry.2010179067" value="2" /> 2</label>
+            <label class="radio-option"><input type="radio" name="entry.2010179067" value="3" /> 3</label>
+            <label class="radio-option"><input type="radio" name="entry.2010179067" value="4" /> 4</label>
+            <label class="radio-option" id="other-radio-option">
+              <input type="radio" name="entry.2010179067" value="__other_option__" /> Other
+            </label>
+          </div>
+          <!-- Google Forms "Other" text response field -->
+          <input type="number" id="q8-other-input" name="entry.2010179067.other_option_response"
+                 placeholder="Enter number" min="1" style="display:none; margin-top:10px;" />
         </div>
 
         <button type="submit" class="btn-submit">Submit Response</button>
@@ -167,6 +197,8 @@
 
   </section>
 </main>
+
+<iframe id="hidden_iframe" name="hidden_iframe" style="display:none;" title="form-target"></iframe>
 
 <div class="ankara-strip"></div>
 

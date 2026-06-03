@@ -383,6 +383,17 @@ textarea { resize: vertical; min-height: 84px; }
   accent-color: var(--blue-mid);
 }
 
+/* ── Conditional fields ── */
+.conditional {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.conditional.visible { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── Submit button ── */
 .btn-submit {
   width: 100%;
